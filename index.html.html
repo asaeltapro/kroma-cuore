@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kroma Cuore | Donde el color toma forma</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F5F0E8;
+    --cream-dark: #EDE5D6;
+    --navy: #1B2B5E;
+    --navy-light: #2C3E78;
+    --terra: #C4603A;
+    --terra-light: #D4724D;
+    --ocre: #C8963A;
+    --sage: #6B8E7A;
+    --dark: #1A1510;
+    --text: #2E2A24;
+    --text-muted: #6B6359;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(196, 96, 58, 0.15);
+    transition: all 0.3s;
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+
+  .nav-logo span { color: var(--terra); font-style: italic; }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+  .nav-links a {
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--terra); }
+
+  .nav-cta {
+    background: var(--navy);
+    color: var(--cream) !important;
+    padding: 0.6rem 1.4rem;
+    border-radius: 2px;
+  }
+
+  .nav-cta:hover { background: var(--terra); color: var(--cream) !important; }
+
+  /* HAMBURGER */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--navy); transition: all 0.3s; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 8rem 3rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; right: -80px;
+    width: 600px; height: 600px;
+    border-radius: 50%;
+    background: rgba(196, 96, 58, 0.08);
+    z-index: 0;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute; bottom: -150px; left: -100px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: rgba(27, 43, 94, 0.05);
+    z-index: 0;
+  }
+
+  .hero-content { position: relative; z-index: 1; }
+
+  .hero-tag {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--terra);
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5vw, 5.5rem);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terra);
+    font-weight: 300;
+  }
+
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.2rem, 2vw, 1.6rem);
+    font-style: italic;
+    color: var(--text-muted);
+    margin: 1.5rem 0 2.5rem;
+    line-height: 1.5;
+  }
+
+  .hero-pills {
+    display: flex; gap: 0.8rem; flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .pill {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--navy);
+    border: 1px solid var(--navy);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--terra);
+    color: var(--cream);
+    padding: 1rem 2.5rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none; cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--navy); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    padding: 1rem 2.5rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 1.5px solid var(--navy);
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover { background: var(--navy); color: var(--cream); }
+
+  .hero-visual {
+    position: relative; z-index: 1;
+    display: flex; justify-content: center; align-items: center;
+  }
+
+  .hero-logo-box {
+    width: 380px; height: 380px;
+    border-radius: 50%;
+    background: var(--cream-dark);
+    border: 2px solid rgba(196, 96, 58, 0.2);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-16px); }
+  }
+
+  .hero-logo-svg { width: 200px; height: auto; }
+
+  .hero-badge {
+    position: absolute; bottom: 40px; right: -20px;
+    background: var(--navy);
+    color: var(--cream);
+    padding: 1.2rem 1.4rem;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 1.4;
+    width: 120px;
+  }
+
+  .hero-badge strong {
+    display: block;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+
+  /* SECTION GENERAL */
+  section { padding: 7rem 3rem; }
+
+  .section-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--terra); }
+
+  /* ABOUT */
+  #nosotros { background: var(--navy); }
+
+  .about-grid {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 5rem; align-items: center;
+  }
+
+  .about-text .section-title { color: var(--cream); }
+  .about-text .section-tag { color: var(--ocre); }
+
+  .about-text p {
+    color: rgba(245, 240, 232, 0.75);
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-values {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem; margin-top: 2.5rem;
+  }
+
+  .value-card {
+    border: 1px solid rgba(245, 240, 232, 0.15);
+    padding: 1.5rem;
+    border-radius: 4px;
+  }
+
+  .value-icon {
+    width: 36px; height: 36px;
+    background: rgba(196, 96, 58, 0.2);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+  }
+
+  .value-card h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+  }
+
+  .value-card p {
+    font-size: 0.85rem;
+    color: rgba(245, 240, 232, 0.6);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .about-stats {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .stat-box {
+    background: rgba(245, 240, 232, 0.06);
+    border: 1px solid rgba(245, 240, 232, 0.1);
+    padding: 2rem;
+    text-align: center;
+    border-radius: 4px;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--terra-light);
+    display: block;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.5);
+    margin-top: 0.5rem;
+    display: block;
+  }
+
+  /* MENU */
+  #menu { background: var(--cream); }
+
+  .menu-wrapper { max-width: 1100px; margin: 0 auto; }
+
+  .menu-header { text-align: center; margin-bottom: 3.5rem; }
+
+  .menu-tabs {
+    display: flex; justify-content: center; gap: 0;
+    margin-bottom: 3rem;
+    border: 1.5px solid var(--navy);
+    border-radius: 2px;
+    width: fit-content;
+    margin-left: auto; margin-right: auto;
+  }
+
+  .tab-btn {
+    padding: 0.8rem 2.5rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    background: transparent;
+    color: var(--text-muted);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .tab-btn:first-child { border-right: 1.5px solid var(--navy); }
+
+  .tab-btn.active {
+    background: var(--navy);
+    color: var(--cream);
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* Talleres Cards */
+  .talleres-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .taller-card {
+    background: white;
+    border: 1px solid rgba(27, 43, 94, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+  }
+
+  .taller-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(27, 43, 94, 0.1); }
+
+  .taller-card.featured { border-color: var(--terra); }
+
+  .taller-badge-featured {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--terra);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    border-radius: 2px;
+  }
+
+  .taller-color-bar { height: 6px; background: var(--terra); }
+  .taller-card:nth-child(1) .taller-color-bar { background: var(--ocre); }
+  .taller-card:nth-child(3) .taller-color-bar { background: var(--sage); }
+
+  .taller-body { padding: 2rem; }
+
+  .taller-collection {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .taller-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .taller-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--terra);
+    margin-bottom: 1.5rem;
+    line-height: 1;
+  }
+
+  .taller-price span { font-size: 1rem; color: var(--text-muted); }
+
+  .taller-info { margin-bottom: 1.5rem; }
+
+  .taller-row {
+    display: flex; justify-content: space-between;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+
+  .taller-row strong { color: var(--text); font-weight: 500; }
+
+  .taller-examples {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+
+  .taller-includes {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--sage);
+    text-transform: uppercase;
+    border: 1px solid var(--sage);
+    padding: 0.5rem 1rem;
+    text-align: center;
+    border-radius: 2px;
+    margin-bottom: 1.2rem;
+  }
+
+  /* Cafe Menu */
+  .cafe-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .cafe-category {
+    background: white;
+    border: 1px solid rgba(27, 43, 94, 0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .cafe-cat-header {
+    background: var(--navy);
+    padding: 1.2rem 1.5rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--cream);
+    letter-spacing: 0.05em;
+  }
+
+  .cafe-items { padding: 0.5rem 0; }
+
+  .cafe-item {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    padding: 0.9rem 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+    transition: background 0.2s;
+  }
+
+  .cafe-item:hover { background: var(--cream); }
+  .cafe-item:last-child { border-bottom: none; }
+
+  .cafe-item-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .cafe-item-desc {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .cafe-item-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--terra);
+    white-space: nowrap;
+    margin-left: 1rem;
+  }
+
+  /* RESERVACIONES */
+  #reservar {
+    background: var(--cream-dark);
+  }
+
+  .reservar-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.2fr;
+    gap: 5rem; align-items: start;
+  }
+
+  .reservar-info .section-title { margin-bottom: 1rem; }
+
+  .reservar-info p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  .reservar-info-items { display: flex; flex-direction: column; gap: 1rem; }
+
+  .info-item {
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+
+  .info-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--terra);
+    margin-top: 6px; flex-shrink: 0;
+  }
+
+  .info-item p { margin: 0; font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+  .info-item strong { color: var(--text); }
+
+  .reservar-form {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 4px;
+    border: 1px solid rgba(27, 43, 94, 0.08);
+  }
+
+  .form-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: var(--navy);
+    margin-bottom: 2rem;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+  .form-group { margin-bottom: 1.2rem; }
+
+  .form-group label {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text);
+    background: var(--cream);
+    border: 1px solid rgba(27, 43, 94, 0.15);
+    border-radius: 2px;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--terra);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 90px; }
+
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .form-success-icon {
+    width: 56px; height: 56px;
+    background: rgba(107, 142, 122, 0.15);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+  }
+
+  .form-success h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .form-success p { font-size: 0.9rem; color: var(--text-muted); }
+
+  /* FIDELIZACION */
+  #fidelizacion { background: var(--cream); }
+
+  .fidelizacion-wrapper { max-width: 1100px; margin: 0 auto; }
+  .fidelizacion-header { text-align: center; margin-bottom: 4rem; }
+  .fidelizacion-header p { max-width: 600px; margin: 0 auto; color: var(--text-muted); line-height: 1.8; }
+
+  .pinceladas-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+  .pincelada-card {
+    background: white;
+    border: 1px solid rgba(27, 43, 94, 0.08);
+    padding: 2rem;
+    border-radius: 4px;
+    text-align: center;
+    transition: transform 0.3s;
+  }
+
+  .pincelada-card:hover { transform: translateY(-4px); }
+
+  .pincelada-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    color: var(--terra);
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .pincelada-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .pincelada-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .pincelada-reward {
+    margin-top: 1rem;
+    background: var(--cream);
+    padding: 0.6rem 1rem;
+    border-radius: 2px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--navy);
+  }
+
+  /* CONTACTO */
+  #contacto { background: var(--navy); }
+
+  .contacto-wrapper {
+    max-width: 1100px; margin: 0 auto;
+    text-align: center;
+  }
+
+  .contacto-wrapper .section-title { color: var(--cream); margin-bottom: 1rem; }
+  .contacto-wrapper .section-tag { color: var(--ocre); }
+
+  .contacto-wrapper > p {
+    color: rgba(245, 240, 232, 0.65);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto 3.5rem;
+    line-height: 1.8;
+  }
+
+  .contacto-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .contacto-card {
+    border: 1px solid rgba(245, 240, 232, 0.12);
+    padding: 2rem;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+  }
+
+  .contacto-card:hover { border-color: var(--terra); }
+
+  .contacto-card-icon {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .contacto-card h4 {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ocre);
+    margin-bottom: 0.5rem;
+  }
+
+  .contacto-card p {
+    font-size: 0.9rem;
+    color: rgba(245, 240, 232, 0.65);
+    line-height: 1.6;
+  }
+
+  .social-row {
+    display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+  }
+
+  .social-btn {
+    display: flex; align-items: center; gap: 0.7rem;
+    padding: 0.8rem 1.8rem;
+    border: 1px solid rgba(245, 240, 232, 0.2);
+    color: rgba(245, 240, 232, 0.75);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .social-btn:hover { border-color: var(--terra); color: var(--terra); }
+
+  /* FOOTER */
+  footer {
+    background: #0F1830;
+    padding: 2rem 3rem;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 1rem;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--cream);
+    opacity: 0.7;
+  }
+
+  .footer-logo span { color: var(--terra); font-style: italic; }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: rgba(245, 240, 232, 0.35);
+    letter-spacing: 0.05em;
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column; gap: 0;
+      position: absolute; top: 100%; left: 0; right: 0;
+      background: var(--cream);
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(196, 96, 58, 0.2);
+    }
+    .nav-links.open li a {
+      display: block; padding: 0.8rem 1.5rem;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .hamburger { display: flex; }
+
+    .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 3rem; }
+    .hero-visual { order: -1; }
+    .hero-logo-box { width: 280px; height: 280px; }
+    .hero-logo-svg { width: 150px; }
+    .hero-badge { right: 20px; bottom: 20px; }
+
+    section { padding: 5rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .talleres-grid { grid-template-columns: 1fr; }
+    .cafe-grid { grid-template-columns: 1fr; }
+    .reservar-grid { grid-template-columns: 1fr; gap: 3rem; }
+    .pinceladas-grid { grid-template-columns: 1fr; }
+    .contacto-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { flex-direction: column; text-align: center; }
+  }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#inicio" class="nav-logo">Kroma <span>Cuore</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#nosotros">Nosotros</a></li>
+    <li><a href="#menu">Menú</a></li>
+    <li><a href="#fidelizacion">Comunidad</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#reservar" class="nav-cta">Reservar</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="inicio" class="hero">
+  <div class="hero-content">
+    <span class="hero-tag">Café · Cerámica · Lectura</span>
+    <h1>Donde el<br>color <em>toma</em><br>forma.</h1>
+    <p class="hero-sub">Un refugio de desconexión creativa<br>en el corazón de Piantini, Santo Domingo.</p>
+    <div class="hero-pills">
+      <span class="pill">Café de Especialidad</span>
+      <span class="pill">Taller de Cerámica</span>
+      <span class="pill">Biblioteca Curada</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#reservar" class="btn-primary">Reservar Taller</a>
+      <a href="#menu" class="btn-outline">Ver Menú</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-logo-box">
+      <!-- Logo SVG Kroma Cuore -->
+      <svg class="hero-logo-svg" viewBox="0 0 200 220" xmlns="http://www.w3.org/2000/svg">
+        <!-- Heart shape with colored sections -->
+        <defs>
+          <clipPath id="heartClip">
+            <path d="M100 185 C60 155 15 120 15 75 C15 45 35 25 60 25 C75 25 90 33 100 45 C110 33 125 25 140 25 C165 25 185 45 185 75 C185 120 140 155 100 185Z"/>
+          </clipPath>
+        </defs>
+        <!-- Navy section -->
+        <path d="M100 185 C60 155 15 120 15 75 C15 45 35 25 60 25 C75 25 90 33 100 45 L100 185Z" fill="#1B2B5E" clip-path="url(#heartClip)"/>
+        <!-- Terracotta section -->
+        <path d="M100 45 L100 185 C140 155 185 120 185 75 C185 45 165 25 140 25 C125 25 110 33 100 45Z" fill="#C4603A" clip-path="url(#heartClip)"/>
+        <!-- Sage stripe -->
+        <path d="M55 50 L145 50 L160 80 L40 80Z" fill="#6B8E7A" clip-path="url(#heartClip)"/>
+        <!-- Ocre stripe -->
+        <path d="M30 100 L170 100 L155 130 L45 130Z" fill="#C8963A" clip-path="url(#heartClip)" opacity="0.7"/>
+        <!-- Coffee cup icon -->
+        <g transform="translate(75, 90)" fill="none">
+          <rect x="5" y="14" width="30" height="22" rx="3" fill="white" opacity="0.9"/>
+          <path d="M35 20 Q44 20 44 26 Q44 32 35 32" stroke="white" stroke-width="2.5" opacity="0.9"/>
+          <path d="M15 10 Q17 4 19 10" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+          <path d="M20 7 Q22 1 24 7" stroke="white" stroke-width="2" stroke-linecap="round" opacity="0.8"/>
+        </g>
+      </svg>
+      <div style="margin-top:1.2rem; text-align:center;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:600; color:#1B2B5E; letter-spacing:0.1em;">KROMA</div>
+        <div style="font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:400; color:#C4603A; font-style:italic; letter-spacing:0.15em; margin-top:-4px;">CUORE</div>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <strong>30</strong>
+      Estaciones Creativas
+    </div>
+  </div>
+</section>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <span class="section-tag">Nuestra historia</span>
+      <h2 class="section-title">No solo vendemos café.<br>Vendemos <em>tiempo bien vivido.</em></h2>
+      <p>Kroma Cuore nació como un refugio de desconexión urbana en Piantini. Somos un concepto híbrido que fusiona el café de especialidad con un taller de cerámica activa y una zona de lectura silenciosa.</p>
+      <p>Transformamos al cliente en co-creador. El arte y el consumo coexisten en un proceso fluido y emocionalmente valioso — porque la mejor taza de café sabe mejor cuando tus manos están llenas de arcilla.</p>
+      <div class="about-values">
+        <div class="value-card">
+          <div class="value-icon">🎨</div>
+          <h4>Creatividad</h4>
+          <p>Aplicada a cada sesión, cada taza, cada pieza.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">✨</div>
+          <h4>Calidad Premium</h4>
+          <p>Insumos importados y materiales de especialidad.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🕯️</div>
+          <h4>Slow Living</h4>
+          <p>Paciencia en los procesos. Sin prisas.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-icon">🫶</div>
+          <h4>Comunidad</h4>
+          <p>Somos un punto de encuentro para mentes creativas.</p>
+        </div>
+      </div>
+    </div>
+    <div class="about-stats fade-in" style="transition-delay:0.15s;">
+      <div class="stat-box">
+        <span class="stat-num">30</span>
+        <span class="stat-label">Estaciones de trabajo</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">15</span>
+        <span class="stat-label">Días máx. de entrega</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Experiencias en una</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">500+</span>
+        <span class="stat-label">Meta de miembros Año 1</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu">
+  <div class="menu-wrapper">
+    <div class="menu-header fade-in">
+      <span class="section-tag">Lo que ofrecemos</span>
+      <h2 class="section-title">Nuestro <em>Menú</em></h2>
+    </div>
+    <div class="menu-tabs fade-in">
+      <button class="tab-btn active" onclick="switchTab('talleres', this)">Talleres de Cerámica</button>
+      <button class="tab-btn" onclick="switchTab('cafe', this)">Café & Bebidas</button>
+    </div>
+
+    <!-- TALLERES -->
+    <div id="tab-talleres" class="tab-content active">
+      <div class="talleres-grid">
+        <!-- Pequeña -->
+        <div class="taller-card fade-in">
+          <div class="taller-color-bar"></div>
+          <div class="taller-body">
+            <div class="taller-collection">Colección</div>
+            <div class="taller-name">"Detalles"</div>
+            <div class="taller-price">RD$ 850 <span>/ sesión</span></div>
+            <div class="taller-info">
+              <div class="taller-row"><span>Tamaño</span><strong>Piezas Pequeñas</strong></div>
+              <div class="taller-row"><span>Duración</span><strong>30 – 45 min</strong></div>
+            </div>
+            <div class="taller-examples">Figuras de animales mini, joyeros de corazón, porta-inciensos, imanes decorativos.</div>
+            <div class="taller-includes">✦ Incluye pieza + pinturas + café de cortesía</div>
+            <a href="#reservar" class="btn-primary" style="width:100%;text-align:center;display:block;">Reservar</a>
+          </div>
+        </div>
+        <!-- Mediana -->
+        <div class="taller-card featured fade-in" style="transition-delay:0.1s;">
+          <div class="taller-badge-featured">Popular</div>
+          <div class="taller-color-bar" style="background:var(--terra);"></div>
+          <div class="taller-body">
+            <div class="taller-collection">Colección</div>
+            <div class="taller-name">"Funcional"</div>
+            <div class="taller-price">RD$ 1,450 <span>/ sesión</span></div>
+            <div class="taller-info">
+              <div class="taller-row"><span>Tamaño</span><strong>Piezas Medianas</strong></div>
+              <div class="taller-row"><span>Duración</span><strong>1 – 1.5 horas</strong></div>
+            </div>
+            <div class="taller-examples">Tazas clásicas (mugs), bowls para cereal, platos de postre, porta-lápices, macetas para suculentas.</div>
+            <div class="taller-includes">✦ Incluye pieza + pinturas + horneado + café de cortesía</div>
+            <a href="#reservar" class="btn-primary" style="width:100%;text-align:center;display:block;">Reservar</a>
+          </div>
+        </div>
+        <!-- Grande -->
+        <div class="taller-card fade-in" style="transition-delay:0.2s;">
+          <div class="taller-color-bar"></div>
+          <div class="taller-body">
+            <div class="taller-collection">Colección</div>
+            <div class="taller-name">"Maestro"</div>
+            <div class="taller-price">RD$ 1,950 <span>/ sesión</span></div>
+            <div class="taller-info">
+              <div class="taller-row"><span>Tamaño</span><strong>Piezas Grandes</strong></div>
+              <div class="taller-row"><span>Duración</span><strong>2+ horas</strong></div>
+            </div>
+            <div class="taller-examples">Jarrones cilíndricos, alcancías grandes, bustos decorativos, platos de servicio, portavelas grandes.</div>
+            <div class="taller-includes">✦ Incluye pieza + pinturas + horneado + café de cortesía</div>
+            <a href="#reservar" class="btn-primary" style="width:100%;text-align:center;display:block;">Reservar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CAFE -->
+    <div id="tab-cafe" class="tab-content">
+      <div class="cafe-grid">
+        <div class="cafe-category fade-in">
+          <div class="cafe-cat-header">☕ Café de Especialidad</div>
+          <div class="cafe-items">
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Espresso Cuore</span><span class="cafe-item-desc">Doble shot, grano de origen único</span></div>
+              <span class="cafe-item-price">RD$ 150</span>
+            </div>
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Latte Terracota</span><span class="cafe-item-desc">Latte con sirope de caramelo artesanal</span></div>
+              <span class="cafe-item-price">RD$ 280</span>
+            </div>
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Cappuccino del Taller</span><span class="cafe-item-desc">Arte latte incluido, leche vaporizada</span></div>
+              <span class="cafe-item-price">RD$ 260</span>
+            </div>
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Cold Brew Azul</span><span class="cafe-item-desc">Infusión fría 24h, con leche de avena</span></div>
+              <span class="cafe-item-price">RD$ 320</span>
+            </div>
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Matcha Kroma</span><span class="cafe-item-desc">Matcha ceremonial importado, leche vegetal</span></div>
+              <span class="cafe-item-price">RD$ 350</span>
+            </div>
+          </div>
+        </div>
+        <div class="cafe-category fade-in" style="transition-delay:0.1s;">
+          <div class="cafe-cat-header">🥐 Desayunos & Brunch</div>
+          <div class="cafe-items">
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Tostada del Ceramista</span><span class="cafe-item-desc">Pan artesanal, aguacate, huevo poché</span></div>
+              <span class="cafe-item-price">RD$ 480</span>
+            </div>
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Bowl Arcilla</span><span class="cafe-item-desc">Acaí, granola artesanal, fruta de temporada</span></div>
+              <span class="cafe-item-price">RD$ 450</span>
+            </div>
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Croissant Piantini</span><span class="cafe-item-desc">Mantequilla francesa, jamón serrano, queso brie</span></div>
+              <span class="cafe-item-price">RD$ 420</span>
+            </div>
+          </div>
+        </div>
+        <div class="cafe-category fade-in" style="transition-delay:0.15s;">
+          <div class="cafe-cat-header">🍰 Dulces del Taller</div>
+          <div class="cafe-items">
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Cheesecake Ocre</span><span class="cafe-item-desc">Maracuyá, base de galleta artesanal</span></div>
+              <span class="cafe-item-price">RD$ 320</span>
+            </div>
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Brownie del Alma</span><span class="cafe-item-desc">Chocolate 70%, nueces, sal marina</span></div>
+              <span class="cafe-item-price">RD$ 280</span>
+            </div>
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Cookie Cuore</span><span class="cafe-item-desc">Chispas de chocolate belga</span></div>
+              <span class="cafe-item-price">RD$ 180</span>
+            </div>
+          </div>
+        </div>
+        <div class="cafe-category fade-in" style="transition-delay:0.2s;">
+          <div class="cafe-cat-header">📦 Combos Kroma</div>
+          <div class="cafe-items">
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Combo Desconexión</span><span class="cafe-item-desc">Taller Detalles + Café Cuore + Dulce</span></div>
+              <span class="cafe-item-price">RD$ 1,100</span>
+            </div>
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Combo Creativo</span><span class="cafe-item-desc">Taller Funcional + Latte + Brunch</span></div>
+              <span class="cafe-item-price">RD$ 1,850</span>
+            </div>
+            <div class="cafe-item">
+              <div><span class="cafe-item-name">Combo Maestro</span><span class="cafe-item-desc">Taller Maestro + Bebida + Postre + Libro</span></div>
+              <span class="cafe-item-price">RD$ 2,400</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMUNIDAD -->
+<section id="fidelizacion">
+  <div class="fidelizacion-wrapper">
+    <div class="fidelizacion-header fade-in">
+      <span class="section-tag">Programa de Lealtad</span>
+      <h2 class="section-title">El <em>Pasaporte Kroma</em></h2>
+      <p>Acumula "Pinceladas" con cada visita y desbloquea beneficios exclusivos. Porque cuanto más creas, más te recompensamos.</p>
+    </div>
+    <div class="pinceladas-grid">
+      <div class="pincelada-card fade-in">
+        <span class="pincelada-num">5</span>
+        <span class="pincelada-label">Pinceladas</span>
+        <p class="pincelada-desc">Completa 5 sellos acumulando en café o talleres.</p>
+        <div class="pincelada-reward">🎁 15% de descuento en tu siguiente pieza</div>
+      </div>
+      <div class="pincelada-card fade-in" style="transition-delay:0.1s;">
+        <span class="pincelada-num">10</span>
+        <span class="pincelada-label">Pinceladas</span>
+        <p class="pincelada-desc">Sigue creando y alcanza el siguiente nivel.</p>
+        <div class="pincelada-reward">☕ Bebida de la casa completamente gratis</div>
+      </div>
+      <div class="pincelada-card fade-in" style="transition-delay:0.2s;">
+        <span class="pincelada-num">∞</span>
+        <span class="pincelada-label">Colección Completa</span>
+        <p class="pincelada-desc">Completa un set (taza, plato y cuenco) de cerámica.</p>
+        <div class="pincelada-reward">🖼️ Mención en la Galería del Mes + cupón de regalo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVAR -->
+<section id="reservar">
+  <div class="reservar-grid">
+    <div class="reservar-info fade-in">
+      <span class="section-tag">Agenda tu visita</span>
+      <h2 class="section-title">Reserva tu <em>experiencia</em></h2>
+      <p>Garantiza tu estación en el taller y vive el momento de creación que te mereces. El espacio es limitado — máximo 30 creadores por sesión.</p>
+      <div class="reservar-info-items">
+        <div class="info-item">
+          <div class="info-dot"></div>
+          <p><strong>📍 Ubicación:</strong> Sector Piantini, Santo Domingo, DN. (Dirección exacta al confirmar reserva)</p>
+        </div>
+        <div class="info-item">
+          <div class="info-dot"></div>
+          <p><strong>🕐 Horario:</strong> Lunes a Domingo, 9:00 AM – 9:00 PM</p>
+        </div>
+        <div class="info-item">
+          <div class="info-dot"></div>
+          <p><strong>🏺 Retiro de piezas:</strong> Notificación automática en máximo 15 días laborables.</p>
+        </div>
+        <div class="info-item">
+          <div class="info-dot"></div>
+          <p><strong>📦 Miembros Comunidad Cuore:</strong> Ofrecemos entrega a domicilio de tus piezas terminadas.</p>
+        </div>
+      </div>
+    </div>
+    <div class="fade-in" style="transition-delay:0.15s;">
+      <div class="reservar-form" id="reservaForm">
+        <h3 class="form-title">Reservar una sesión</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" id="fname" placeholder="Tu nombre" />
+          </div>
+          <div class="form-group">
+            <label>Apellido</label>
+            <input type="text" id="lname" placeholder="Tu apellido" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Correo electrónico</label>
+          <input type="email" id="email" placeholder="ejemplo@correo.com" />
+        </div>
+        <div class="form-group">
+          <label>Teléfono / WhatsApp</label>
+          <input type="tel" id="phone" placeholder="+1 (809) 000-0000" />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Tipo de sesión</label>
+            <select id="tipo">
+              <option value="">Seleccionar...</option>
+              <option>Colección "Detalles" — RD$ 850</option>
+              <option>Colección "Funcional" — RD$ 1,450</option>
+              <option>Colección "Maestro" — RD$ 1,950</option>
+              <option>Solo Café y Biblioteca</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Número de personas</label>
+            <select id="personas">
+              <option>1 persona</option>
+              <option>2 personas</option>
+              <option>3 – 5 personas</option>
+              <option>6 – 10 personas</option>
+              <option>Grupo corporativo (10+)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Fecha preferida</label>
+            <input type="date" id="fecha" />
+          </div>
+          <div class="form-group">
+            <label>Hora preferida</label>
+            <select id="hora">
+              <option>9:00 AM</option>
+              <option>11:00 AM</option>
+              <option>1:00 PM</option>
+              <option>3:00 PM</option>
+              <option>5:00 PM</option>
+              <option>7:00 PM</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Mensaje (opcional)</label>
+          <textarea id="mensaje" placeholder="¿Alguna petición especial o es para un evento?"></textarea>
+        </div>
+        <button class="btn-primary" onclick="submitReserva()" style="width:100%;text-align:center;">Confirmar Reserva →</button>
+      </div>
+      <div class="form-success" id="formSuccess">
+        <div class="form-success-icon">✓</div>
+        <h3>¡Reserva enviada!</h3>
+        <p>Gracias por elegir Kroma Cuore. Te contactaremos en las próximas 24 horas para confirmar tu sesión.</p>
+        <br>
+        <p style="font-size:0.8rem;color:#aaa;">Una taza de café y una pieza de arcilla esperan por ti 🎨</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section id="contacto">
+  <div class="contacto-wrapper">
+    <span class="section-tag">Encuéntranos</span>
+    <h2 class="section-title">Conecta con <em>Kroma Cuore</em></h2>
+    <p>Visítanos en Piantini o síguenos en redes para no perderte ninguna novedad, evento especial ni nueva colección de temporada.</p>
+    <div class="contacto-grid">
+      <div class="contacto-card fade-in">
+        <span class="contacto-card-icon">📍</span>
+        <h4>Ubicación</h4>
+        <p>Sector Piantini<br>Santo Domingo, DN<br>República Dominicana</p>
+      </div>
+      <div class="contacto-card fade-in" style="transition-delay:0.1s;">
+        <span class="contacto-card-icon">🕐</span>
+        <h4>Horario</h4>
+        <p>Lun – Vie: 9AM – 9PM<br>Sábados: 10AM – 10PM<br>Domingos: 11AM – 8PM</p>
+      </div>
+      <div class="contacto-card fade-in" style="transition-delay:0.2s;">
+        <span class="contacto-card-icon">📱</span>
+        <h4>WhatsApp</h4>
+        <p>+1 (809) 000-0000<br>Respondemos en menos<br>de 24 horas</p>
+      </div>
+    </div>
+    <div class="social-row">
+      <a href="#" class="social-btn">📸 @kromacuore</a>
+      <a href="#" class="social-btn">🎵 @kromacuore</a>
+      <a href="#" class="social-btn">✉️ hello@kromacuore.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Kroma <span>Cuore</span> — Donde el color toma forma.</div>
+  <div class="footer-copy">© 2026 Kroma Cuore. Piantini, Santo Domingo.</div>
+</footer>
+
+<script>
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + tab).classList.add('active');
+}
+
+function submitReserva() {
+  const fname = document.getElementById('fname').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const tipo = document.getElementById('tipo').value;
+  if (!fname || !email || !tipo) {
+    alert('Por favor completa los campos requeridos: nombre, correo y tipo de sesión.');
+    return;
+  }
+  document.getElementById('reservaForm').style.display = 'none';
+  document.getElementById('formSuccess').style.display = 'block';
+  window.scrollTo({ top: document.getElementById('reservar').offsetTop - 80, behavior: 'smooth' });
+}
+
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+  navLinks.classList.toggle('open');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+const today = new Date().toISOString().split('T')[0];
+document.getElementById('fecha').min = today;
+</script>
+</body>
+</html>
