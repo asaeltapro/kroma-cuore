@@ -1,39 +1,1074 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kroma Cuore | Donde el color toma forma</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KROMA CUORE - Café, Cerámica y Cultura</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Raleway:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  :root {
-    --cream: #F5F0E8;
-    --cream-dark: #EDE5D6;
-    --navy: #1B2B5E;
-    --navy-light: #2C3E78;
-    --terra: #C4603A;
-    --terra-light: #D4724D;
-    --ocre: #C8963A;
-    --sage: #6B8E7A;
-    --dark: #1A1510;
-    --text: #2E2A24;
-    --text-muted: #6B6359;
-  }
+        :root {
+            --navy: #1a2332;
+            --terracotta: #c67b5c;
+            --ochre: #d4a574;
+            --cream: #f5f0e8;
+            --sage: #9eb09c;
+        }
 
-  html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--navy);
+            background-color: var(--cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-  body {
-    font-family: 'Raleway', sans-serif;
-    background: var(--cream);
-    color: var(--text);
-    overflow-x: hidden;
-  }
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
 
-  /* Texto justificado para todos los párrafos */
-  p { text-align: justify; }
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(26, 35, 50, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--cream);
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--terracotta);
+        }
+
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--navy) 0%, #2a3d54 100%);
+            color: var(--cream);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--terracotta) 0%, transparent 70%);
+            opacity: 0.1;
+            top: 20%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--ochre) 0%, transparent 70%);
+            opacity: 0.1;
+            bottom: 20%;
+            right: 10%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background-color: var(--terracotta);
+            color: var(--cream);
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--terracotta);
+        }
+
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--terracotta);
+        }
+
+        section {
+            padding: 5rem 5%;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .section-header .subtitle {
+            font-size: 1.1rem;
+            color: var(--terracotta);
+            font-style: italic;
+        }
+
+        .about-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: justify;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            text-align: justify;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            padding: 0.75rem 2rem;
+            background-color: white;
+            border: 2px solid var(--terracotta);
+            color: var(--navy);
+            cursor: pointer;
+            border-radius: 3px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .tab-button.active {
+            background-color: var(--terracotta);
+            color: var(--cream);
+        }
+
+        .tab-button:hover {
+            background-color: var(--terracotta);
+            color: var(--cream);
+        }
+
+        .tab-content {
+            display: none;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .menu-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 2rem;
+            color: var(--terracotta);
+            margin-bottom: 0.5rem;
+            font-style: italic;
+        }
+
+        .category-description {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 2rem;
+            text-align: justify;
+        }
+
+        .menu-items {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .menu-item:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .menu-item-info h4 {
+            font-size: 1.3rem;
+            color: var(--navy);
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-item-price {
+            font-size: 1.2rem;
+            color: var(--terracotta);
+            font-weight: 700;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+
+        .workshop-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .tier-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tier-card h4 {
+            font-size: 1.5rem;
+            color: var(--terracotta);
+            margin-bottom: 1rem;
+        }
+
+        .tier-price {
+            font-size: 2rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .tier-features {
+            list-style: none;
+            text-align: left;
+            margin-top: 1rem;
+        }
+
+        .tier-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .tier-features li:before {
+            content: "→ ";
+            color: var(--terracotta);
+            font-weight: bold;
+        }
+
+        .loyalty-program {
+            background-color: var(--navy);
+            color: var(--cream);
+            padding: 4rem 5%;
+            margin-top: 3rem;
+        }
+
+        .loyalty-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .loyalty-content h3 {
+            font-size: 2.5rem;
+            color: var(--cream);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .loyalty-content p {
+            text-align: justify;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-item {
+            background-color: rgba(245, 240, 232, 0.1);
+            padding: 1.5rem;
+            border-radius: 5px;
+            border-left: 4px solid var(--terracotta);
+        }
+
+        .benefit-item h4 {
+            color: var(--ochre);
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .reservation-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            background-color: white;
+            padding: 2.5rem;
+            border-radius: 5px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #ddd;
+            border-radius: 3px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--terracotta);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1rem;
+            background-color: var(--terracotta);
+            color: var(--cream);
+            border: none;
+            border-radius: 3px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-button:hover {
+            background-color: var(--navy);
+        }
+
+        footer {
+            background-color: var(--navy);
+            color: var(--cream);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            color: var(--ochre);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--cream);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--terracotta);
+        }
+
+        .copyright {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(245, 240, 232, 0.2);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 3rem 5%;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">KROMA CUORE</div>
+        <ul class="nav-links">
+            <li><a href="#inicio">INICIO</a></li>
+            <li><a href="#nosotros">NOSOTROS</a></li>
+            <li><a href="#servicios">SERVICIOS</a></li>
+            <li><a href="#menu">MENÚ</a></li>
+            <li><a href="#reservar">RESERVAR</a></li>
+        </ul>
+    </nav>
+
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1>KROMA CUORE</h1>
+            <p>Donde el café, la cerámica y la cultura convergen</p>
+            <a href="#reservar" class="cta-button">RESERVA TU EXPERIENCIA</a>
+        </div>
+    </section>
+
+    <section id="nosotros">
+        <div class="section-header">
+            <h2>Nuestra Historia</h2>
+            <p class="subtitle">Cinco años cultivando creatividad</p>
+        </div>
+        <div class="about-content">
+            <p>Fundado en 2021 en el corazón de Piantini, Santo Domingo, KROMA CUORE nació de la visión de crear un espacio donde las distintas expresiones artísticas y culturales pudieran encontrarse. Celebramos nuestro quinto aniversario en 2026 como testimonio de una comunidad que valora la autenticidad, la creatividad y la conexión humana.</p>
+            
+            <p>Somos más que una cafetería: somos un ecosistema cultural que integra tres experiencias complementarias. Nuestro café sirve granos selectos de Etiopía y Colombia, preparados con técnicas artesanales que realzan los perfiles únicos de cada origen. El taller de cerámica ofrece un espacio de exploración táctil donde la arcilla se transforma en expresión personal. Nuestra biblioteca curada invita a la reflexión y el descubrimiento literario en un ambiente diseñado para la contemplación.</p>
+            
+            <p>Con más de 500 miembros activos en nuestra comunidad, KROMA CUORE se ha consolidado como un punto de encuentro para creativos, pensadores y buscadores de experiencias significativas. Cada elemento de nuestro espacio ha sido cuidadosamente diseñado para estimular los sentidos y fomentar la conexión genuina entre personas, ideas y disciplinas artísticas.</p>
+        </div>
+    </section>
+
+    <section id="servicios">
+        <div class="section-header">
+            <h2>Nuestros Espacios</h2>
+            <p class="subtitle">Tres experiencias, una filosofía</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M32 8C24 8 18 14 18 22C18 26 20 30 22 32L20 48H44L42 32C44 30 46 26 46 22C46 14 40 8 32 8Z" stroke="#c67b5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M20 48H44V52C44 54 42 56 40 56H24C22 56 20 54 20 52V48Z" stroke="#c67b5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M26 16C26 16 28 12 32 12C36 12 38 16 38 16" stroke="#c67b5c" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <h3>Cafetería Especializada</h3>
+                <p>Servimos café de origen único proveniente de Etiopía y Colombia, seleccionado por sus notas distintivas y preparado con métodos que honran su procedencia. Cada taza cuenta una historia de terroir, procesamiento artesanal y dedicación al oficio. Nuestro menú gastronómico complementa la experiencia con propuestas que equilibran técnica culinaria y sabores auténticos.</p>
+            </div>
+
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <ellipse cx="32" cy="40" rx="20" ry="12" stroke="#c67b5c" stroke-width="2"/>
+                    <path d="M32 28C38 28 42 32 42 36V40C42 44 38 48 32 48C26 48 22 44 22 40V36C22 32 26 28 32 28Z" stroke="#c67b5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M28 20L32 28L36 20" stroke="#c67b5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3>Taller de Cerámica</h3>
+                <p>Nuestro estudio ofrece programas estructurados de cerámica que abarcan desde la introducción al modelado hasta técnicas avanzadas de esmaltado y horneado. Trabajamos con arcilla de alta calidad y proporcionamos acceso a tornos, herramientas profesionales y hornos especializados. Los talleres están diseñados para adaptarse tanto a principiantes como a ceramistas con experiencia.</p>
+            </div>
+
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="16" y="12" width="32" height="40" rx="2" stroke="#c67b5c" stroke-width="2"/>
+                    <line x1="22" y1="20" x2="42" y2="20" stroke="#c67b5c" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="22" y1="26" x2="42" y2="26" stroke="#c67b5c" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="22" y1="32" x2="38" y2="32" stroke="#c67b5c" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                <h3>Biblioteca Curada</h3>
+                <p>Nuestra colección bibliográfica abarca literatura contemporánea, ensayo cultural, teoría del arte y filosofía. Los títulos han sido seleccionados para provocar reflexión y diálogo. El espacio está diseñado como una extensión natural de la experiencia del café, ofreciendo rincones de lectura que invitan a la inmersión en las ideas sin distracciones innecesarias.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="section-header">
+            <h2>Nuestro Menú</h2>
+            <p class="subtitle">Disfruta de la mejor gastronómica local</p>
+        </div>
+
+        <div class="menu-tabs">
+            <button class="tab-button active" data-tab="entradas">Entradas</button>
+            <button class="tab-button" data-tab="principales">Platos Fuertes</button>
+            <button class="tab-button" data-tab="dulces">Postres</button>
+            <button class="tab-button" data-tab="calientes">Bebidas Calientes</button>
+            <button class="tab-button" data-tab="frias">Bebidas Frías</button>
+            <button class="tab-button" data-tab="taller">Taller de Cerámica</button>
+        </div>
+
+        <div id="entradas" class="tab-content active">
+            <div class="menu-category">
+                <h3 class="category-title">Entradas "Primeros Trazos"</h3>
+                <p class="category-description">Pequeños bocados diseñados para estimular la creatividad.</p>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Tríptico de Hummus Terroso</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 550</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Bocetos de Carpaccio de Res</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 875</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Empanaditas Sello de Autor</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 495</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Tosta de Aguacate Vanguardista</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 625</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="principales" class="tab-content">
+            <div class="menu-category">
+                <h3 class="category-title">Plato Fuerte "Obras Maestras"</h3>
+                <p class="category-description">Propuestas contundentes con equilibrio entre técnica y sabor.</p>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Manifiesto de Prosciutto e Higos</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 850</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Risotto al Óleo de Azafrán</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 1,150</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Tacos en Textura de Tempura</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 795</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Bagel Ébano y Salmón</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 895</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Antología de Verdes y Quinoa</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 675</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="dulces" class="tab-content">
+            <div class="menu-category">
+                <h3 class="category-title">Platos Dulces "El Final del Capítulo"</h3>
+                <p class="category-description">El cierre perfecto para una tarde de lectura o pintura.</p>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Waffle Cervantino</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 550</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Crepas Lienzo de Mascarpone</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 525</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Panqueques Musa de Canela</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 575</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Tartaleta Geometría Cítrica</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 495</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="calientes" class="tab-content">
+            <div class="menu-category">
+                <h3 class="category-title">Bebidas Calientes "Inspiración en Taza"</h3>
+                <p class="category-description">Café de origen y bebidas especializadas.</p>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Espresso Origen Puro</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 145</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Latte de Lavanda Nube de Versos</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 265</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Mocaccino Cacao y Pimienta</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 285</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Chocolate Realismo Mágico</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 310</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="frias" class="tab-content">
+            <div class="menu-category">
+                <h3 class="category-title">Bebidas Frías y Mocktails "Paleta de Refrescos"</h3>
+                <p class="category-description">Refrescos creativos y opciones sin alcohol.</p>
+                <div class="menu-items">
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Cold Brew Tiempo de Silencio</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 295</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Limonada de Guisante Mariposa</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 245</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Soda de Albahaca y Fresas (Mocktail)</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 325</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Néctar de Cúrcuma e Inspiración</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 350</span>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-info">
+                            <h4>Smoothie de Pistacho y Cardamomo</h4>
+                        </div>
+                        <span class="menu-item-price">RD$ 395</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="taller" class="tab-content">
+            <div class="menu-category">
+                <h3 class="category-title">Programas de Cerámica</h3>
+                <p class="category-description">Talleres estructurados para todos los niveles de experiencia.</p>
+                <div class="workshop-tiers">
+                    <div class="tier-card">
+                        <h4>Iniciación</h4>
+                        <div class="tier-price">RD$ 2,500</div>
+                        <p style="margin-bottom: 1rem; color: #666;">Introducción completa al trabajo con arcilla</p>
+                        <ul class="tier-features">
+                            <li>4 sesiones de 2 horas</li>
+                            <li>Técnicas básicas de modelado</li>
+                            <li>Materiales incluidos</li>
+                            <li>Una pieza horneada</li>
+                            <li>Grupos reducidos (max. 8)</li>
+                        </ul>
+                    </div>
+
+                    <div class="tier-card">
+                        <h4>Intermedio</h4>
+                        <div class="tier-price">RD$ 4,200</div>
+                        <p style="margin-bottom: 1rem; color: #666;">Profundización en torno y decoración</p>
+                        <ul class="tier-features">
+                            <li>8 sesiones de 2.5 horas</li>
+                            <li>Trabajo en torno eléctrico</li>
+                            <li>Introducción a esmaltes</li>
+                            <li>Hasta 3 piezas horneadas</li>
+                            <li>Acceso a estudio abierto</li>
+                        </ul>
+                    </div>
+
+                    <div class="tier-card">
+                        <h4>Avanzado</h4>
+                        <div class="tier-price">RD$ 6,800</div>
+                        <p style="margin-bottom: 1rem; color: #666;">Desarrollo de proyectos personales</p>
+                        <ul class="tier-features">
+                            <li>12 sesiones de 3 horas</li>
+                            <li>Técnicas complejas</li>
+                            <li>Experimentación con engobes</li>
+                            <li>Piezas ilimitadas</li>
+                            <li>Asesoría individual</li>
+                            <li>Certificado de participación</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="loyalty-program">
+        <div class="loyalty-content">
+            <h3>Pasaporte Kroma</h3>
+            <p>Nuestro programa de lealtad reconoce y recompensa la participación continua en la comunidad de KROMA CUORE. Cada visita, taller o compra acumula Pinceladas, nuestra moneda interna de apreciación que se traduce en beneficios tangibles y acceso preferencial a experiencias exclusivas.</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>Acumulación de Pinceladas</h4>
+                    <p>Cada peso gastado equivale a una Pincelada. 100 Pinceladas se traducen en RD$ 100 de descuento en cualquiera de nuestros servicios.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>Acceso Prioritario</h4>
+                    <p>Reservas anticipadas para talleres especializados y eventos culturales. Notificaciones tempranas sobre nuevos menús y lanzamientos de productos.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>Beneficios Exclusivos</h4>
+                    <p>Descuentos progresivos en programas de cerámica. Degustaciones privadas de nuevos orígenes de café antes de su lanzamiento oficial.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="reservar">
+        <div class="section-header">
+            <h2>Reserva Tu Experiencia</h2>
+            <p class="subtitle">Asegura tu espacio en nuestro próximo taller o mesa</p>
+        </div>
+
+        <form class="reservation-form" id="reservationForm">
+            <div class="form-group">
+                <label for="nombre">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono</label>
+                <input type="tel" id="telefono" name="telefono" required>
+            </div>
+
+            <div class="form-group">
+                <label for="servicio">Tipo de reserva</label>
+                <select id="servicio" name="servicio" required>
+                    <option value="">Selecciona una opción</option>
+                    <option value="mesa">Mesa en Cafetería</option>
+                    <option value="iniciacion">Taller Iniciación</option>
+                    <option value="intermedio">Taller Intermedio</option>
+                    <option value="avanzado">Taller Avanzado</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="fecha">Fecha preferida</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="personas">Número de personas</label>
+                <input type="number" id="personas" name="personas" min="1" max="8" value="1" required>
+            </div>
+
+            <div class="form-group">
+                <label for="comentarios">Comentarios adicionales</label>
+                <textarea id="comentarios" name="comentarios"></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">ENVIAR RESERVA</button>
+        </form>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-section">
+                    <h4>Ubicación</h4>
+                    <p>Piantini<br>Santo Domingo<br>República Dominicana</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Horario</h4>
+                    <p>Lunes a Viernes: 8:00 AM - 8:00 PM<br>
+                    Sábados: 9:00 AM - 9:00 PM<br>
+                    Domingos: 10:00 AM - 6:00 PM</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p>Email: info@kromacuore.com<br>
+                    Tel: +1 (809) 555-KROMA<br>
+                    WhatsApp: +1 (829) 555-5555</p>
+                    <div class="social-links">
+                        <a href="#">Instagram</a>
+                        <a href="#">Facebook</a>
+                        <a href="#">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 KROMA CUORE. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Menu tabs
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.getAttribute('data-tab');
+                
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                
+                button.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // Form submission
+        document.getElementById('reservationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                nombre: document.getElementById('nombre').value,
+                email: document.getElementById('email').value,
+                telefono: document.getElementById('telefono').value,
+                servicio: document.getElementById('servicio').value,
+                fecha: document.getElementById('fecha').value,
+                personas: document.getElementById('personas').value,
+                comentarios: document.getElementById('comentarios').value
+            };
+
+            const mailtoLink = `mailto:info@kromacuore.com?subject=Reserva KROMA CUORE - ${formData.nombre}&body=` +
+                `Nombre: ${formData.nombre}%0D%0A` +
+                `Email: ${formData.email}%0D%0A` +
+                `Teléfono: ${formData.telefono}%0D%0A` +
+                `Tipo de Reserva: ${formData.servicio}%0D%0A` +
+                `Fecha Preferida: ${formData.fecha}%0D%0A` +
+                `Número de Personas: ${formData.personas}%0D%0A` +
+                `Comentarios: ${formData.comentarios}`;
+
+            window.location.href = mailtoLink;
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
