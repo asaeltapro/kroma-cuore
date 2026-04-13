@@ -391,21 +391,25 @@
 
         .exp-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            grid-template-rows: auto auto;
-            gap: 2px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
         }
 
         .exp-card {
             background: var(--navy);
-            padding: 3rem 2.5rem;
-            position: relative; overflow: hidden;
-            transition: transform 0.4s;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
             cursor: default;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            /* Resetea spans previos e inline styles para asegurar el flujo responsive */
+            grid-column: auto !important;
+            grid-row: auto !important;
         }
-        .exp-card:hover { transform: scale(0.99); }
-
-        .exp-card.tall { grid-row: span 2; }
+        .exp-card:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
         .exp-card.light { background: var(--cream-dk); }
         .exp-card.terra { background: var(--terra); }
 
@@ -865,6 +869,7 @@
             .footer-top { grid-template-columns: 1fr; }
             .stamps { grid-template-columns: repeat(5,1fr); }
         }
+        
     </style>
 </head>
 <body>
